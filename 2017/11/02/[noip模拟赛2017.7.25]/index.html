@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="中文题目名称 拆地毯 还教室 皇后游戏      英文题目名称 carpet classroom game    输入文件名  标准输入（键盘）    输出文件名  标准输出（屏幕）    每个测试点时限 1 秒 1 秒 1 秒   内存限制 512MB 512MB 512MB    测试点数目 10 20 20    每个测试点分值 10 5 5    是否有部分分 否 否 否    题目">
+<meta name="keywords" content="线段树,模拟赛,贪心,最小生成树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="noip模拟赛2017.7.25">
+<meta property="og:url" content="http://anoxiacxy.github.io/2017/11/02/[noip模拟赛2017.7.25]/index.html">
+<meta property="og:site_name" content="Anoxiacxy">
+<meta property="og:description" content="中文题目名称 拆地毯 还教室 皇后游戏      英文题目名称 carpet classroom game    输入文件名  标准输入（键盘）    输出文件名  标准输出（屏幕）    每个测试点时限 1 秒 1 秒 1 秒   内存限制 512MB 512MB 512MB    测试点数目 10 20 20    每个测试点分值 10 5 5    是否有部分分 否 否 否    题目">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/602188122c9e7dcad8b871be8cc3fd96?fid=3376044848-250528-438125876625120&time=1500962400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-eflN%2FyWsceARj2HHTdQEbQ4ksA0%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=4768239905905310350&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
+<meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/0d249a036637aed38d171ba81c032a0f?fid=3376044848-250528-66385442026709&time=1500962400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-GlfkSxMgoGSuDWeiVDoMWYUR6ac%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=4768414778982743226&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%3Dl%7D%5E%7Br%7D%28x_i+dx%29%5E%7B2%7D%3D%5Csum_%7Bi%3Dl%7D%5E%7Br%7Dx_i%5E%7B2%7D+2*x_i*dx+dx%5E%7B2%7D">
+<meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/6e5b9cb82ec2a2575d422afbdc7a6e4e?fid=3376044848-250528-1080827319429034&time=1500962400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ji2hLMCxPV4P6Yomr0ixNeOmLJ8%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=4768323478522785363&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
+<meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/0f020503af2d426fc53d941721e0c87c?fid=3376044848-250528-942135520941111&time=1500962400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-a8Sm3Dy2%2FPhyaSnvCcbQwiS1EvM%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=4768217641612998419&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
+<meta property="og:updated_time" content="2017-12-09T11:59:32.327Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="noip模拟赛2017.7.25">
+<meta name="twitter:description" content="中文题目名称 拆地毯 还教室 皇后游戏      英文题目名称 carpet classroom game    输入文件名  标准输入（键盘）    输出文件名  标准输出（屏幕）    每个测试点时限 1 秒 1 秒 1 秒   内存限制 512MB 512MB 512MB    测试点数目 10 20 20    每个测试点分值 10 5 5    是否有部分分 否 否 否    题目">
+<meta name="twitter:image" content="https://thumbnail0.baidupcs.com/thumbnail/602188122c9e7dcad8b871be8cc3fd96?fid=3376044848-250528-438125876625120&time=1500962400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-eflN%2FyWsceARj2HHTdQEbQ4ksA0%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=4768239905905310350&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
+
+
+
+
+
+
+  <link rel="canonical" href="http://anoxiacxy.github.io/2017/11/02/[noip模拟赛2017.7.25]/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>noip模拟赛2017.7.25 | Anoxiacxy</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c77ff13e58ea93ceab2fb172561f87ab";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Anoxiacxy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://anoxiacxy.github.io/2017/11/02/[noip模拟赛2017.7.25]/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Anoxiacxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Anoxiacxy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">noip模拟赛2017.7.25
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-11-02 21:38:00" itemprop="dateCreated datePublished" datetime="2017-11-02T21:38:00+08:00">2017-11-02</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/比赛/" itemprop="url" rel="index"><span itemprop="name">比赛</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/02/[noip模拟赛2017.7.25]/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/11/02/[noip模拟赛2017.7.25]/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/02/[noip模拟赛2017.7.25]/" class="leancloud_visitors" data-flag-title="noip模拟赛2017.7.25">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <table>
+<thead>
+<tr>
+<th>中文题目名称</th>
+<th>拆地毯</th>
+<th>还教室</th>
+<th>皇后游戏 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>英文题目名称</td>
+<td>carpet</td>
+<td>classroom</td>
+<td>game </td>
+</tr>
+<tr>
+<td>输入文件名</td>
+<td></td>
+<td>标准输入（键盘）</td>
+<td></td>
+</tr>
+<tr>
+<td>输出文件名</td>
+<td></td>
+<td>标准输出（屏幕）</td>
+<td></td>
+</tr>
+<tr>
+<td>每个测试点时限</td>
+<td>1 秒</td>
+<td>1 秒</td>
+<td>1 秒</td>
+</tr>
+<tr>
+<td>内存限制</td>
+<td>512MB</td>
+<td>512MB</td>
+<td>512MB </td>
+</tr>
+<tr>
+<td>测试点数目</td>
+<td>10</td>
+<td>20</td>
+<td>20 </td>
+</tr>
+<tr>
+<td>每个测试点分值</td>
+<td>10</td>
+<td>5</td>
+<td>5 </td>
+</tr>
+<tr>
+<td>是否有部分分</td>
+<td>否</td>
+<td>否</td>
+<td>否 </td>
+</tr>
+<tr>
+<td>题目类型</td>
+<td>传统型</td>
+<td>传统型</td>
+<td>传统型 </td>
+</tr>
+</tbody>
+</table>
+ <a id="more"></a>
+<p>注意：最终测试时，将开启-O2 优化开关。 </p>
+<h1 id="拆地毯"><a href="#拆地毯" class="headerlink" title="拆地毯"></a>拆地毯</h1><h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>还记得 NOIP 2011 提高组 Day1 中的铺地毯吗？时光飞逝，光阴荏苒，三年 过去了。组织者精心准备的颁奖典礼早已结束，留下的则是被人们踩过的地毯。 请你来解决类似于铺地毯的另一个问题。 </p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>会场上有 n 个关键区域，不同的关键区域由 m 条无向地毯彼此连接。每条 地毯可由三个整数 u、v、w 表示，其中 u 和 v 为地毯连接的两个关键区域编号， w 为这条地毯的美丽度。 由于颁奖典礼已经结束，铺过的地毯不得不拆除。为 了贯彻勤俭节约的原则， 组织者被要求只能保留 K 条地毯，且保留的地毯构成的图中，任意可互相到达 的两点间只能有一种方式互相到达。换言之，组织者要求新图中不能有环。现在 组织者求助你，想请你帮忙算出这 K 条地毯的美丽度之和最大为多少。 </p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含三个正整数 n、m、K。 接下来 m 行中每行包含三个正整数 u、v、w。 </p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>只包含一个正整数，表示这 K 条地毯的美丽度之和的最大值。 </p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><p>5 4 3<br>1 2 10<br>1 3 9<br>2 3 7<br>4 5 3 </p>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><p>22 </p>
+<h2 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h2><p>选择第 1、2、4 条地毯，美丽度之和为 10 + 9 + 3 = 22。 若选择第 1、2、3 条地毯，虽然美丽度之和可以达到 10 + 9 + 7 = 26，但这 将导致关键区域 1、2、3 构成一个环，这是题目中不允许的。 </p>
+<h2 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h2><p>所有测试点的数据规模如下：<br><img src="https://thumbnail0.baidupcs.com/thumbnail/602188122c9e7dcad8b871be8cc3fd96?fid=3376044848-250528-438125876625120&amp;time=1500962400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-eflN%2FyWsceARj2HHTdQEbQ4ksA0%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=4768239905905310350&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" alt="image"><br>对于全部测试数据满足 1 ≤ K ≤ n-1，1 ≤ u≠v ≤ n，1 ≤ w ≤ 1,000。保证至 少存在一种方案使得在原图中可以选出 K 条边，这 K 条边构成的新图无环。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>用并查集保证连通图无环，那么只需要建出k条边即可，就像最小生成树一样<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF (1&lt;&lt;30)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y,w;</span><br><span class="line">&#125;E[<span class="number">200100</span>];</span><br><span class="line"><span class="keyword">int</span> n,m,k,ans,cnt;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Edge a,Edge b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.w&gt;b.w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> F[<span class="number">200100</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=x;i++)F[i]=i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findf</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x==F[x]?x:F[x]=findf(F[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergef</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	F[findf(x)]=findf(y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(<span class="string">"carpet.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"carpet.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;E[i].x,&amp;E[i].y,&amp;E[i].w);</span><br><span class="line">	sort(E+<span class="number">1</span>,E+<span class="number">1</span>+m,cmp);</span><br><span class="line">	pre(n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x=E[i].x,y=E[i].y;</span><br><span class="line">		<span class="keyword">if</span>(findf(x)!=findf(y))&#123;</span><br><span class="line">			mergef(x,y);</span><br><span class="line">			ans+=E[i].w;</span><br><span class="line">			cnt++;</span><br><span class="line">			<span class="keyword">if</span>(cnt==k)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">5 4 3 1 2 10 1 3 9 2 3 7 4 5 3 </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="还教室"><a href="#还教室" class="headerlink" title="还教室"></a>还教室</h1><h2 id="引子-1"><a href="#引子-1" class="headerlink" title="引子"></a>引子</h2><p>还记得 NOIP 2012 提高组 Day2 中的借教室吗？时光飞逝，光阴荏苒，两年 过去了，曾经借教室的同学们纷纷归还自己当初租借的教室。请你来解决类似于 借教室的另一个问题。 </p>
+<h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2><p>在接受借教室请求的 n 天中，第 i 天剩余的教室为 ai个。作为大学借教室服 务的负责人，你需要完成如下三种操作共 m 次： ① 第 l 天到第 r 天，每天被归还 d 个教室。 ② 询问第 l 天到第 r 天教室个数的平均数。 ③ 询问第 l 天到第 r 天教室个数的方差。 </p>
+<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包括两个正整数 n 和 m，其中 n 为借教室的天数，m 为操作次数。 接下来一行，共 包含 n 个整数，第 i 个整数表示第 i 天剩余教室数目为 ai个。 接下来 m 行，每行的第一个整数为操作编号（只能为 1 或 2 或 3），接下来 包含两个正整数 l 和 r，若操作编号为 1，则接下来再包含一个正整数 d。 </p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>对于每个操作 2 和操作 3，输出一个既约分数（分子与分母互质）表示询问 的答案（详见样例）。 若 答 案 为 0 ， 请 输出“0/1”（不含引号）。 </p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><p>5 4<br>1 2 3 4 5<br>1 1 2 3<br>2 2 4<br>3 2 4<br>3 1 5 </p>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><p>4/1<br>2/3<br>14/25 </p>
+<h2 id="数据规模与约定-1"><a href="#数据规模与约定-1" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h2><p>所有测试点的数据规模如下： </p>
+<p><img src="https://thumbnail0.baidupcs.com/thumbnail/0d249a036637aed38d171ba81c032a0f?fid=3376044848-250528-66385442026709&amp;time=1500962400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-GlfkSxMgoGSuDWeiVDoMWYUR6ac%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=4768414778982743226&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" alt="image"></p>
+<p>对于全部测试数据满足：1 ≤ l ≤ r ≤ n，0 ≤ ai ≤ 10，1 ≤ d ≤ 3，操作 1 的数量 不超过 10%。<br>注意：ai和 d 的范围很小及操作1数量很少的原因是为了保证答案的分子不会很大，以防止答案的分子溢出 64 位整数的范围，这与题目做法无关。 </p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>不难发现，我们现在要做的，就是要维护区间和与区间平方和，分块是一种思路，线段树也是，但要推出一下式子</p>
+<p><img src="https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%3Dl%7D%5E%7Br%7D%28x_i&plus;dx%29%5E%7B2%7D%3D%5Csum_%7Bi%3Dl%7D%5E%7Br%7Dx_i%5E%7B2%7D&plus;2*x_i*dx&plus;dx%5E%7B2%7D" alt="image"></p>
+<p>像这样，修改一段区间的值，并快速维护平方和就很快了，打线段树吧<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF (1&lt;&lt;30)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r;</span><br><span class="line">	LL sumx_1,sumx_2;</span><br><span class="line">	LL dt;</span><br><span class="line">&#125;T[<span class="number">400400</span>];</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100100</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ls=p&lt;&lt;<span class="number">1</span>,rs=p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</span><br><span class="line">	T[p].sumx_1=T[ls].sumx_1+T[rs].sumx_1;</span><br><span class="line">	T[p].sumx_2=T[ls].sumx_2+T[rs].sumx_2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	LL dx=T[p].dt;T[p].dt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ls=p&lt;&lt;<span class="number">1</span>,rs=p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</span><br><span class="line">	T[ls].dt+=dx;T[rs].dt+=dx;</span><br><span class="line">	T[ls].sumx_2+=dx*dx*(T[ls].r-T[ls].l+<span class="number">1</span>)+<span class="number">2</span>*dx*T[ls].sumx_1;</span><br><span class="line">	T[rs].sumx_2+=dx*dx*(T[rs].r-T[rs].l+<span class="number">1</span>)+<span class="number">2</span>*dx*T[rs].sumx_1;</span><br><span class="line">	T[ls].sumx_1+=dx*(T[ls].r-T[ls].l+<span class="number">1</span>);</span><br><span class="line">	T[rs].sumx_1+=dx*(T[rs].r-T[rs].l+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	T[p].l=l;T[p].r=r;</span><br><span class="line">	<span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">		T[p].sumx_1=a[l];</span><br><span class="line">		T[p].sumx_2=a[l]*a[l];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	build(l,mid,p&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	build(mid+<span class="number">1</span>,r,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	pushup(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">updata</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p,LL v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ll=T[p].l,rr=T[p].r;</span><br><span class="line">	<span class="keyword">if</span>(ll==l&amp;&amp;rr==r)&#123;</span><br><span class="line">		T[p].sumx_2+=v*v*(rr-ll+<span class="number">1</span>)+<span class="number">2</span>*T[p].sumx_1*v;</span><br><span class="line">		T[p].sumx_1+=v*(rr-ll+<span class="number">1</span>);</span><br><span class="line">		T[p].dt+=v;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	pushdown(p);</span><br><span class="line">	<span class="keyword">int</span> mid=(ll+rr)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(r&lt;=mid)updata(l,r,p&lt;&lt;<span class="number">1</span>,v);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(l&gt;mid)updata(l,r,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,v);</span><br><span class="line">	<span class="keyword">else</span> updata(l,mid,p&lt;&lt;<span class="number">1</span>,v),updata(mid+<span class="number">1</span>,r,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,v);</span><br><span class="line">	pushup(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">querysumx1</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ll=T[p].l,rr=T[p].r;</span><br><span class="line">	<span class="keyword">if</span>(ll==l&amp;&amp;rr==r)<span class="keyword">return</span> T[p].sumx_1;</span><br><span class="line">	pushdown(p);</span><br><span class="line">	<span class="keyword">int</span> mid=(ll+rr)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(r&lt;=mid)<span class="keyword">return</span> querysumx1(l,r,p&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(l&gt;mid)<span class="keyword">return</span> querysumx1(l,r,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> querysumx1(l,mid,p&lt;&lt;<span class="number">1</span>)+querysumx1(mid+<span class="number">1</span>,r,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">querysumx2</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ll=T[p].l,rr=T[p].r;</span><br><span class="line">	<span class="keyword">if</span>(ll==l&amp;&amp;rr==r)<span class="keyword">return</span> T[p].sumx_2;</span><br><span class="line">	pushdown(p);</span><br><span class="line">	<span class="keyword">int</span> mid=(ll+rr)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(r&lt;=mid)<span class="keyword">return</span> querysumx2(l,r,p&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(l&gt;mid)<span class="keyword">return</span> querysumx2(l,r,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> querysumx2(l,mid,p&lt;&lt;<span class="number">1</span>)+querysumx2(mid+<span class="number">1</span>,r,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">gcd</span><span class="params">(LL x,LL y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> y==<span class="number">0</span>?x:gcd(y,x%y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(<span class="string">"classroom.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"classroom.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	build(<span class="number">1</span>,n,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> opt,l,r;<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;opt,&amp;l,&amp;r);</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">1</span>)&#123;</span><br><span class="line">			LL d;<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;d);</span><br><span class="line">			updata(l,r,<span class="number">1</span>,d);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt==<span class="number">2</span>)&#123;</span><br><span class="line">			LL as=querysumx1(l,r,<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span>(as==<span class="number">0</span>)<span class="built_in">printf</span>(<span class="string">"0/1\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				LL am=r-l+<span class="number">1</span>;</span><br><span class="line">				LL k=gcd(am,as);</span><br><span class="line">				am/=k;as/=k;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%lld/%lld\n"</span>,as,am);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt==<span class="number">3</span>)&#123;</span><br><span class="line">			LL x1=querysumx1(l,r,<span class="number">1</span>);</span><br><span class="line">			LL x2=querysumx2(l,r,<span class="number">1</span>);</span><br><span class="line">			LL len=r-l+<span class="number">1</span>;</span><br><span class="line">			LL as=x2*len<span class="number">-2</span>*x1*x1+x1*x1;</span><br><span class="line">			LL am=len*len;</span><br><span class="line">			<span class="keyword">if</span>(as==<span class="number">0</span>)<span class="built_in">printf</span>(<span class="string">"0/1\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				LL k=gcd(am,as);</span><br><span class="line">				am/=k;as/=k;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%lld/%lld\n"</span>,as,am);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="皇后游戏"><a href="#皇后游戏" class="headerlink" title="皇后游戏"></a>皇后游戏</h1><h2 id="引子-2"><a href="#引子-2" class="headerlink" title="引子"></a>引子</h2><p>还记得 NOIP 2012 提高组 Day1 的国王游戏吗？时光飞逝，光阴荏苒，两年 过去了。国王游戏早已过时，如今已被皇后游戏取代，请你来解决类似于国王游 戏的另一个问题。 </p>
+<h2 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h2><p>皇后有 n 位大臣，每位大臣的左右手上面分别写上了一个正整数。恰逢国庆 节来临，皇后决定为 n 位大臣颁发奖金，其中第 i 位大臣所获得的奖金数目为第 i－1 位大臣所获得奖金数目与前 i 位大臣左手上的数的和的较大值再加上第 i 位 大臣右手上的数。 形式化地讲：我们设第 i 位大臣左手上的正整数为 ai，右手上的正整数为 bi， 则第 i 位大臣获得的奖金数目为 ci可以表达为：<br><img src="https://thumbnail0.baidupcs.com/thumbnail/6e5b9cb82ec2a2575d422afbdc7a6e4e?fid=3376044848-250528-1080827319429034&amp;time=1500962400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ji2hLMCxPV4P6Yomr0ixNeOmLJ8%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=4768323478522785363&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" alt="image"></p>
+<p>当然，吝啬的皇后并不希望太多的奖金被发给大臣，所以她想请你来重新安 排一下队伍的顺序，使得获得奖金最多的大臣，所获奖金数目尽可能的少。 注意：重新安排队伍并不意味着一定要打乱顺序，我们允许不改变任何一 位大臣的位置。 </p>
+<h2 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含一个正整数 T，表示测试数据的组数。 接下来 T 个部分，每个部分的第一行包含一个正整数 n，表示大臣的数目。<br> 每个部分接下来 n 行中，每 行 两个正整数，分 别 为 a i 和 b i ，含 义 如 上文所述。 </p>
+<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>共 T 行，每行包含一个整数，表示获得奖金最多的大臣所获得的奖金数目。</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 1"></a>样例输入 1</h2><p>1<br>3<br>4 1<br>2 2<br>1 2 </p>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 1"></a>样例输出 1</h2><p>8 </p>
+<h2 id="样例说明-1"><a href="#样例说明-1" class="headerlink" title="样例说明 1"></a>样例说明 1</h2><p>按照 1、2、3 这样排列队伍，获得最多奖金的大臣获得奖金的数目为 10；  按照 1、3、2 这样排列队伍，获得最多奖金的大臣获得奖金的数目为 9； 按照 2、1、3 这样排列队伍，获得最多奖金的大臣获得奖金的数目为 9； 按照 2、3、1 这样排列队伍，获得最多奖金的大臣获得奖金的数目为 8； 按照 3、1、2 这样排列队伍，获得最多奖金的大臣获得奖金的数目为 9； 按照 3、2、1 这样排列队伍，获得最多奖金的大臣获得奖金的数目为 8。 当按照 3、2、1 这样排列队伍时，三位大臣左右手的数分别为： (1, 2)、(2, 2)、(4, 1) 第 1 位大臣获得的奖金为 1 + 2 = 3； 第 2 位大臣获得的奖金为 max{3, 3} + 2 = 5； 第 3 为大臣获得的奖金为 max{5, 7} + 1 = 8。 </p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入 2"></a>样例输入 2</h2><p>2<br>5<br>85 100<br>95 99<br>76 87<br>60 97<br>79 85<br>12<br>9 68<br>18 45<br>52 61<br>39 83<br>63 67<br>45 99<br>52 54<br>82 100<br>23 54<br>99 94<br>63 100<br>52 68 </p>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出 2"></a>样例输出 2</h2><p>528<br>902 </p>
+<h2 id="数据规模与约定-2"><a href="#数据规模与约定-2" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h2><p><img src="https://thumbnail0.baidupcs.com/thumbnail/0f020503af2d426fc53d941721e0c87c?fid=3376044848-250528-942135520941111&amp;time=1500962400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-a8Sm3Dy2%2FPhyaSnvCcbQwiS1EvM%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=4768217641612998419&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" alt="image"></p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>类似国王游戏的贪心，我们希望找出一个策略，使得排序得到的值最优，<br>对于大臣i,j，有两种情况，i在前j在后，或者，j在前i在后，对于这两种情况，一定是后面的大臣拿的钱多，这点从递推公式可以看出来，那么，我们分别计算两种情况下，得钱最多的大臣拿了多少钱，对于那个拿钱少的情况，不就是相当于题意中的“使得获得奖金最多的大臣，所获奖金数目尽可能的少”嘛，这样得到了局部的最优，不难想到，按照此贪心策略，最终答案一定是最优解，两种情况的具体计算就见代码的cmp函数了，反正代码不长<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF (1&lt;&lt;30)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	LL l,r;</span><br><span class="line">&#125;m[<span class="number">500500</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node x,node y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> max(x.l+x.r+y.r,x.l+y.l+y.r)&lt;max(x.r+y.l+y.r,x.l+x.r+y.l);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(<span class="string">"game.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"game.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		<span class="keyword">int</span> n;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;m[i].l,&amp;m[i].r);</span><br><span class="line">			sort(m+<span class="number">1</span>,m+<span class="number">1</span>+n,cmp);</span><br><span class="line">			LL sum=<span class="number">0</span>,c=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">				sum+=m[i].l;</span><br><span class="line">				c=max(c,sum)+m[i].r;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,c);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/模拟赛/" rel="tag"># 模拟赛</a>
+          
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+            <a href="/tags/最小生成树/" rel="tag"># 最小生成树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/02/[noip模拟赛2017.7.22]/" rel="next" title="noip模拟赛2017.7.22">
+                <i class="fa fa-chevron-left"></i> noip模拟赛2017.7.22
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/[noip模拟赛2017.7.24]/" rel="prev" title="noip模拟赛2017.7.24">
+                noip模拟赛2017.7.24 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar1.jpg"
+                alt="Anoxiacxy" />
+            
+              <p class="site-author-name" itemprop="name">Anoxiacxy</p>
+              <p class="site-description motion-element" itemprop="description">Just a place for OI ?</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/anoxiacxy" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1171049519@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.edgration.com" title="Edgration" target="_blank">Edgration</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://panda2134.tk" title="Panda2134" target="_blank">Panda2134</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#拆地毯"><span class="nav-number">1.</span> <span class="nav-text">拆地毯</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.2.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式"><span class="nav-number">1.3.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式"><span class="nav-number">1.4.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入"><span class="nav-number">1.5.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出"><span class="nav-number">1.6.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例说明"><span class="nav-number">1.7.</span> <span class="nav-text">样例说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据规模与约定"><span class="nav-number">1.8.</span> <span class="nav-text">数据规模与约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.9.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#还教室"><span class="nav-number">2.</span> <span class="nav-text">还教室</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子-1"><span class="nav-number">2.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述-1"><span class="nav-number">2.2.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式-1"><span class="nav-number">2.3.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式-1"><span class="nav-number">2.4.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-1"><span class="nav-number">2.5.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-1"><span class="nav-number">2.6.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据规模与约定-1"><span class="nav-number">2.7.</span> <span class="nav-text">数据规模与约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-1"><span class="nav-number">2.8.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#皇后游戏"><span class="nav-number">3.</span> <span class="nav-text">皇后游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子-2"><span class="nav-number">3.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述-2"><span class="nav-number">3.2.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式-2"><span class="nav-number">3.3.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式-2"><span class="nav-number">3.4.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-1"><span class="nav-number">3.5.</span> <span class="nav-text">样例输入 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-1"><span class="nav-number">3.6.</span> <span class="nav-text">样例输出 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例说明-1"><span class="nav-number">3.7.</span> <span class="nav-text">样例说明 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-2"><span class="nav-number">3.8.</span> <span class="nav-text">样例输入 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-2"><span class="nav-number">3.9.</span> <span class="nav-text">样例输出 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据规模与约定-2"><span class="nav-number">3.10.</span> <span class="nav-text">数据规模与约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-2"><span class="nav-number">3.11.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anoxiacxy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共165.5k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'h00rVboeWzWVxyEiyOANIMQq-gzGzoHsz',
+        appKey: 'iXoTTN9t2BfDImzc8kxgjpDN',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("h00rVboeWzWVxyEiyOANIMQq-gzGzoHsz", "iXoTTN9t2BfDImzc8kxgjpDN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>

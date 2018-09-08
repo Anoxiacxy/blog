@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="为什么学后缀数组后缀数组是一个比较强大的处理字符串的算法，是有关字符串的基础算法，所以必须掌握。学会后缀自动机(SAM) 就不用学后缀数组(SA) 了？不，虽然SAM看起来更为强大和全面，但是有些SAM解决不了的问题能被SA解决，只掌握SAM是远远不够的。">
+<meta name="keywords" content="SA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后缀数组">
+<meta property="og:url" content="http://anoxiacxy.github.io/2017/11/02/后缀数组/index.html">
+<meta property="og:site_name" content="Anoxiacxy">
+<meta property="og:description" content="为什么学后缀数组后缀数组是一个比较强大的处理字符串的算法，是有关字符串的基础算法，所以必须掌握。学会后缀自动机(SAM) 就不用学后缀数组(SA) 了？不，虽然SAM看起来更为强大和全面，但是有些SAM解决不了的问题能被SA解决，只掌握SAM是远远不够的。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://img.blog.csdn.net/20160205125505545">
+<meta property="og:image" content="http://img.blog.csdn.net/20160205125603928">
+<meta property="og:image" content="http://img.blog.csdn.net/20160205125636006">
+<meta property="og:updated_time" content="2017-12-09T11:49:09.386Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="后缀数组">
+<meta name="twitter:description" content="为什么学后缀数组后缀数组是一个比较强大的处理字符串的算法，是有关字符串的基础算法，所以必须掌握。学会后缀自动机(SAM) 就不用学后缀数组(SA) 了？不，虽然SAM看起来更为强大和全面，但是有些SAM解决不了的问题能被SA解决，只掌握SAM是远远不够的。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160205125505545">
+
+
+
+
+
+
+  <link rel="canonical" href="http://anoxiacxy.github.io/2017/11/02/后缀数组/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>后缀数组 | Anoxiacxy</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c77ff13e58ea93ceab2fb172561f87ab";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Anoxiacxy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://anoxiacxy.github.io/2017/11/02/后缀数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Anoxiacxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Anoxiacxy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">后缀数组
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-11-02 21:38:00" itemprop="dateCreated datePublished" datetime="2017-11-02T21:38:00+08:00">2017-11-02</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/02/后缀数组/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/11/02/后缀数组/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/02/后缀数组/" class="leancloud_visitors" data-flag-title="后缀数组">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="为什么学后缀数组"><a href="#为什么学后缀数组" class="headerlink" title="为什么学后缀数组"></a>为什么学后缀数组</h2><p>后缀数组是一个比较强大的处理<strong>字符串</strong>的算法，是有关字符串的<strong>基础算法</strong>，所以<strong>必须</strong>掌握。<br>学会<strong>后缀自动机(SAM)</strong> 就不用学<strong>后缀数组(SA)</strong> 了？不，虽然SAM看起来更为强大和全面，但是有些SAM解决不了的问题能被SA解决，只掌握SAM是远远不够的。<br><a id="more"></a><br>……<br>有什么SAM做不了的例子？<br>比如果求一个串后缀的lcp方面的应用，这是SA可以很方便的用rmq来维护，但是SAM还要求lca，比较麻烦，还有就是字符集比较大的时候SA也有优势。<br>现在这里放道题，看完这个blog可能就会做了！：<br>你可想想这道题：你有一个01串S，然后定义一个前缀最右边的位置就是这个前缀的结束位置。现在有q多个询问，每个询问结束位置在l~r中不同前缀的最长公共后缀是多长？<br>|S|,q≤100000\<br>时限4s</p>
+<p>而下面是我对后缀数组的一些理解</p>
+<h2 id="构造后缀数组——SA"><a href="#构造后缀数组——SA" class="headerlink" title="构造后缀数组——SA"></a>构造后缀数组——SA</h2><h3 id="先定义一些变量的含义"><a href="#先定义一些变量的含义" class="headerlink" title="先定义一些变量的含义"></a>先定义一些变量的含义</h3><p><strong>Str ：需要处理的字符串(长度为Len) \<br>Suffix[i] ：Str下标为i ~ Len的连续子串(即后缀) \<br>Rank[i] : Suffix[i]在所有后缀中的排名 \<br>SA[i] : 满足Suffix[SA[1]] &lt; Suffix[SA[2]] …… &lt; Suffix[SA[Len]],即排名为i的后缀为Suffix[SA[i]] (与Rank是互逆运算)</strong> \<br>好，来形象的理解一下 \<br> <img src="http://img.blog.csdn.net/20160205125505545" alt="image"><br><strong>后缀数组</strong>指的就是这个<strong>SA[i]</strong>,有了它，我们就可以实现一些很强大的功能(如不相同子串个数、连续重复子串等)。如何快速的到它，便成为了这个算法的<strong>关键</strong>。而<strong>SA</strong>和<strong>Rank</strong>是互逆的，只要求出任意一个，另一个就可以O(Len)得到。<br>现在比较主流的算法有两种，<strong>倍增</strong>和<strong>DC3</strong>，在这里，就主要讲一下稍微慢一些，但比较好实现以及理解的倍增算法(虽说慢，但也是<strong>O(Len logLen))</strong> 的。</p>
+<h2 id="进入正题——倍增算法"><a href="#进入正题——倍增算法" class="headerlink" title="进入正题——倍增算法"></a>进入正题——倍增算法</h2><p>倍增算法的<strong>主要思想</strong> ：对于一个后缀<strong>Suffix[i]</strong>,如果想直接得到<strong>Rank</strong>比较困难，但是我们可以对每个字符开始的长度为<strong>2^k</strong>的字符串求出排名，k从0开始每次递增1(每递增1就成为一轮)，当<br><strong>2^k</strong>大于Len时，<strong>所得到的序列就是Rank，而SA也就知道了。O(logLen)枚举k</strong> \<br>这样做有什么<strong>好处</strong>呢？<br>设每一轮得到的序列为<strong>rank</strong>(注意<strong>r</strong>是<strong>小写</strong>，最终后缀排名<strong>Rank</strong>是<strong>大写</strong>)。有一个<strong>很美妙的性质</strong>就出现了！<strong>第k轮的rank</strong>可由<strong>第k - 1轮的rank</strong>快速得来!<br>为什么呢？为了方便描述，<strong>设SubStr(i,len)为从第i个字符开始，长度为len的字符串</strong>我们可以把第k轮<strong>SubStr(i, 2^k)</strong> 看成是一个由<strong>SubStr(i,2^k−1)</strong> 和<strong>SubStr(i+2^k−1,2^k−1)</strong> 拼起来的东西。类似<strong>rmq算法</strong>，这两个长度而<br><strong>2^k−1</strong> 的字符串是<strong>上一轮遇到过的！当然上一轮的rank也知道！</strong> 那么吧每个这一轮的字符串都转化为这种形式，并且大家都知道字符串的比较是从左往右，<strong>左边和右边的大小我们可以用上一轮的rank表示，那么……这不就是一些两位数(也可以视为第一关键字和第二关键字)比较大小吗!再把这些两位数重新排名就是这一轮的rank。</strong><br>我们用下面这张经典的图理解一下： \<br> <img src="http://img.blog.csdn.net/20160205125603928" alt="image"><br>相信只要理解字符串的比较法则(跟实数差不多)，理解起来并不难。#还有一个细节就是怎么把这些两位数排序？这种位数少的数进行排序毫无疑问的要用一个<strong>复杂度为长度 * 排序数的个数</strong>的优美算法——<strong>基数排序</strong>(对于<strong>两位数</strong>的数复杂度就是<strong>O(Len)</strong> 的)。<br><strong>基数排序原理</strong> ： 把数字依次按照由<strong>低位到高位</strong>依次排序，排序时只看当前位。对于每一位排序时，因为上一位已经是有序的，所以这一位相等或符合大小条件时就不用交换位置，如果不符合大小条件就交换，实现可以用”桶”来做。(叙说起来比较奇怪，看完下面的代码应该更好理解，也可以上网查有关资料)<br>好了<strong>SA</strong>和 <strong>Rank(大写R)</strong> 到此为止就处理好了。(下面有 <strong>详解代码！</strong>)。但我们发现，只有这两样东西好像没什么用，为了处理重复子串之类的问题，我们就要引入一个表示<strong>最长公共前缀</strong>的新助手<strong>Height数组</strong>！</p>
+<h2 id="构造最长公共前缀——Height"><a href="#构造最长公共前缀——Height" class="headerlink" title="构造最长公共前缀——Height"></a>构造最长公共前缀——Height</h2><h3 id="同样先是定义一些变量"><a href="#同样先是定义一些变量" class="headerlink" title="同样先是定义一些变量"></a>同样先是定义一些变量</h3><p><strong>Heigth[i] : 表示Suffix[SA[i]]和Suffix[SA[i - 1]]的最长公共前缀，也就是排名相邻的两个后缀的最长公共前缀</strong>\<br><strong>H[i] : 等于Height[Rank[i]]，也就是后缀Suffix[i]和它前一名的后缀的最长公共前缀</strong>  \<br>而两个<strong>排名不相邻</strong>的最长公共前缀定义为排名在它们之间的<strong>Height的最小值</strong>。<br>跟上面一样，先形像的理解一下：<br><img src="http://img.blog.csdn.net/20160205125636006" alt="image"></p>
+<h2 id="高效地得到Height数组"><a href="#高效地得到Height数组" class="headerlink" title="高效地得到Height数组"></a>高效地得到Height数组</h2><p>如果一个一个数按<strong>SA中的顺序</strong>比较的话复杂度是<strong>O(N^2)</strong> 级别的，想要快速的得到Height就需要用到一个关于<strong>H数组</strong>的性质。<br><strong>H[i] ≥ H[i - 1] - 1!</strong><br>如果上面这个性质是对的，那我们可以按照<strong>H[1]、H[2]……H[Len]</strong> 的顺序进行计算，那么复杂度就降为O(N)了！<br><strong>让我们尝试一下证明这个性质</strong> : 设<strong>Suffix[k]</strong>是排在<strong>Suffix[i - 1]</strong> 前一名的后缀，则它们的最长公共前缀是<strong>H[i - 1]</strong>。都<strong>去掉第一个字符</strong> ，就变成<strong>Suffix[k + 1]</strong> 和<strong>Suffix[i]</strong>。<strong>如果H[i - 1] = 0或1</strong>,那么<strong>H[i] ≥ 0</strong>显然成立。<strong>否则，H[i] ≥ H[i - 1] - 1(去掉了原来的第一个,其他前缀一样相等)</strong>，所以Suffix[i]和在它前一名的后缀的最长公共前缀至少是H[i - 1] - 1。<br>仔细想想还是比较好理解的。H求出来，那Height就相应的求出来了，这样<strong>结合SA，Rank和Height我们就可以做很多关于字符串的题了！</strong></p>
+<h2 id="代码——Code"><a href="#代码——Code" class="headerlink" title="代码——Code"></a>代码——Code</h2><p>建议复制到自己的编程软件上看<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    Problem: JZOJ1598(询问一个字符串中有多少至少出现两次的子串)</span></span><br><span class="line"><span class="comment">    Content: SA's Code and Explanation</span></span><br><span class="line"><span class="comment">    Author : YxuanwKeith</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> ch[MAXN], All[MAXN];</span><br><span class="line"><span class="keyword">int</span> SA[MAXN], rank[MAXN], Height[MAXN], tax[MAXN], tp[MAXN], a[MAXN], n, m; </span><br><span class="line"><span class="keyword">char</span> str[MAXN];</span><br><span class="line"><span class="comment">//rank[i] 第i个后缀的排名; SA[i] 排名为i的后缀位置; Height[i] 排名为i的后缀与排名为(i-1)的后缀的LCP</span></span><br><span class="line"><span class="comment">//tax[i] 计数排序辅助数组; tp[i] rank的辅助数组(计数排序中的第二关键字),与SA意义一样。</span></span><br><span class="line"><span class="comment">//a为原串</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RSort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//rank第一关键字,tp第二关键字。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i ++) tax[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) tax[rank[tp[i]]] ++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i ++) tax[i] += tax[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i --) SA[tax[rank[tp[i]]] --] = tp[i]; <span class="comment">//确保满足第一关键字的同时，再满足第二关键字的要求</span></span><br><span class="line">&#125; <span class="comment">//计数排序,把新的二元组排序。</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> w)</span> </span>&#123; <span class="keyword">return</span> f[x] == f[y] &amp;&amp; f[x + w] == f[y + w]; &#125; </span><br><span class="line"><span class="comment">//通过二元组两个下标的比较，确定两个子串是否相同</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Suffix</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//SA</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) rank[i] = a[i], tp[i] = i;</span><br><span class="line">    m = <span class="number">127</span> ,RSort(); <span class="comment">//一开始是以单个字符为单位，所以(m = 127)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">1</span>, p = <span class="number">1</span>, i; p &lt; n; w += w, m = p) &#123; <span class="comment">//把子串长度翻倍,更新rank</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//w 当前一个子串的长度; m 当前离散后的排名种类数</span></span><br><span class="line">        <span class="comment">//当前的tp(第二关键字)可直接由上一次的SA的得到</span></span><br><span class="line">        <span class="keyword">for</span> (p = <span class="number">0</span>, i = n - w + <span class="number">1</span>; i &lt;= n; i ++) tp[++ p] = i; <span class="comment">//长度越界,第二关键字为0</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i ++) <span class="keyword">if</span> (SA[i] &gt; w) tp[++ p] = SA[i] - w;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//更新SA值,并用tp暂时存下上一轮的rank(用于cmp比较)</span></span><br><span class="line">        RSort(), swap(rank, tp), rank[SA[<span class="number">1</span>]] = p = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//用已经完成的SA来更新与它互逆的rank,并离散rank</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">2</span>; i &lt;= n; i ++) rank[SA[i]] = cmp(tp, SA[i], SA[i - <span class="number">1</span>], w) ? p : ++ p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//离散：把相等的字符串的rank设为相同。</span></span><br><span class="line">    <span class="comment">//LCP</span></span><br><span class="line">    <span class="keyword">int</span> j, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; Height[rank[i ++]] = k) </span><br><span class="line">        <span class="keyword">for</span>( k = k ? k - <span class="number">1</span> : k, j = SA[rank[i] - <span class="number">1</span>]; a[i + k] == a[j + k]; ++ k);</span><br><span class="line">    <span class="comment">//这个知道原理后就比较好理解程序</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, str);</span><br><span class="line">    n = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++) a[i + <span class="number">1</span>] = str[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Init();</span><br><span class="line">    Suffix();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = Height[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i ++) ans += max(Height[i] - Height[i - <span class="number">1</span>], <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4个比较基础的应用"><a href="#4个比较基础的应用" class="headerlink" title="4个比较基础的应用"></a>4个比较基础的应用</h2><p>Q1：一个串中两个串的最大公共前缀是多少？<br>A1：<strong>这不就是Height吗？</strong>用rmq预处理，再O(1)查询。 </p>
+<p>Q2：一个串中可重叠的重复最长子串是多长？<br>A2：就是求任意两个后缀的最长公共前缀，而任意两个后缀的最长公共前缀都是<strong>Height 数组里某一段的最小值</strong>，那最长的就是<strong>Height中的最大值</strong>。 </p>
+<p>Q3：一个串种不可重叠的重复最长子串是多长？<br>A3：先<strong>二分答案，转化成判别式的问题</strong>比较好处理。假设当前需要判别长度为k是否符合要求，只需把排序后的后缀<strong>分成若干组</strong>，其中<strong>每组的后缀之间的Height 值都不小于k</strong>，再判断其中有没有不重复的后缀，具体就是看<strong>最大的SA值和最小的SA值相差超不超过k</strong>，有一组超过的话k就是合法答案。 </p>
+<p>A4：一个字符串不相等的子串的个数是多少？<br>Q4：<strong>每个子串一定是某个后缀的前缀，那么原问题等价于求所有后缀之间的不相同的前缀的个数</strong>。而且可以发现每一个后缀<strong>Suffix[SA[i]]</strong>的贡献是<strong>Len - SA[i] + 1</strong>,但是有子串算重复，重复的就是<strong>Heigh[i]个与前面相同的前缀</strong>，那么减去就可以了。最后，一个后缀<strong>Suffix[SA[i]]</strong>的贡献就是<strong>Len - SA[k] + 1 - Height[k]</strong>。<br>对于后缀数组更多的应用这里就不详细阐述，经过思考后每个人都会发现它的一些不同的用途，它的功能也许比你想象中的更强大！</p>
+<h1 id="最开始的那道题"><a href="#最开始的那道题" class="headerlink" title="最开始的那道题"></a>最开始的那道题</h1><p>先搬下来。。。<br>你可想想这道题：你有一个01串S，然后定义一个前缀最右边的位置就是这个前缀的结束位置。现在有很多个询问，每q个询问结束位置在l~r中不同前缀的最长公共后缀是多长？<br>|S|,q≤100000\<br>时限4s\<br><strong>简单</strong>思路：首先可以把字符串反过来就是求后缀的最长公共前缀了，可以用SA求出height数组，然后用rmq预处理之后就是求两个位置间的最小值。然后对于一个区间，显然只有在SA数组中相邻的两个串可以贡献答案。<br>对于区间询问的问题可以用莫队处理，然后考虑加入一个后缀应该怎么处理，我们可以维护一个按SA数组排序的链表。假设我们先把所有位置的SA全部加入，然后按顺序删除，重新按顺序加入时就可以O(1)完成修改。那么按照这个思路我们可以用固定左端点的并查集，做到只加入，不删除，然后用<br>O(n√n+nlogn)<br>的复杂度完成这道题。<br>*可能后面的处理方式比较麻烦，如果直接用splay维护区间中的后缀的话可以做到<br>O(n√nlogn)<br>，这个方法就比较直观，而SAM在个问题上还是有点无力的。这题只是为了说明SA相比于SAM还是有他的独到之处，特别是在处理后缀的lcp之类的问题上。</p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>以上就是我对后缀数组的理解 ——<strong>YxuanwKeith</strong> <a href="http://blog.csdn.net/yxuanwkeith/article/details/50636898" target="_blank" rel="noopener">原帖戳这里</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SA/" rel="tag"># SA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/02/回文检测/" rel="next" title="回文检测">
+                <i class="fa fa-chevron-left"></i> 回文检测
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/1003[ZJOI2006]物流运输/" rel="prev" title="物流运输">
+                物流运输 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar1.jpg"
+                alt="Anoxiacxy" />
+            
+              <p class="site-author-name" itemprop="name">Anoxiacxy</p>
+              <p class="site-description motion-element" itemprop="description">Just a place for OI ?</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/anoxiacxy" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1171049519@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.edgration.com" title="Edgration" target="_blank">Edgration</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://panda2134.tk" title="Panda2134" target="_blank">Panda2134</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么学后缀数组"><span class="nav-number">1.</span> <span class="nav-text">为什么学后缀数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造后缀数组——SA"><span class="nav-number">2.</span> <span class="nav-text">构造后缀数组——SA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先定义一些变量的含义"><span class="nav-number">2.1.</span> <span class="nav-text">先定义一些变量的含义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入正题——倍增算法"><span class="nav-number">3.</span> <span class="nav-text">进入正题——倍增算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造最长公共前缀——Height"><span class="nav-number">4.</span> <span class="nav-text">构造最长公共前缀——Height</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同样先是定义一些变量"><span class="nav-number">4.1.</span> <span class="nav-text">同样先是定义一些变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高效地得到Height数组"><span class="nav-number">5.</span> <span class="nav-text">高效地得到Height数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码——Code"><span class="nav-number">6.</span> <span class="nav-text">代码——Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4个比较基础的应用"><span class="nav-number">7.</span> <span class="nav-text">4个比较基础的应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最开始的那道题"><span class="nav-number"></span> <span class="nav-text">最开始的那道题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结束"><span class="nav-number">1.</span> <span class="nav-text">结束</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anoxiacxy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共165.5k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'h00rVboeWzWVxyEiyOANIMQq-gzGzoHsz',
+        appKey: 'iXoTTN9t2BfDImzc8kxgjpDN',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("h00rVboeWzWVxyEiyOANIMQq-gzGzoHsz", "iXoTTN9t2BfDImzc8kxgjpDN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>

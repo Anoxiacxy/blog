@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="HBOI2018[九省联考]——零AC线外选手进队记$0+80+20=100$, 这便是蒟蒻选手 $Day1$ 的 $NOIP~2017$ 分数。$van$ 了，全 $van$ 了，这边是我当时的想法。在前一天，我拿到了自己 $NOIP$ 考试时的源代码，交到了 $luogu$ 上面测了一发。嗯，$450$ 分，感觉很稳。一边感觉自己省队不出意外肯定稳了，一边盘算这几天要去哪里看看电影，放松一下什">
+<meta name="keywords" content="游记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「HBOI2018」游记">
+<meta property="og:url" content="http://anoxiacxy.github.io/2018/04/11/HBOI2018游记/index.html">
+<meta property="og:site_name" content="Anoxiacxy">
+<meta property="og:description" content="HBOI2018[九省联考]——零AC线外选手进队记$0+80+20=100$, 这便是蒟蒻选手 $Day1$ 的 $NOIP~2017$ 分数。$van$ 了，全 $van$ 了，这边是我当时的想法。在前一天，我拿到了自己 $NOIP$ 考试时的源代码，交到了 $luogu$ 上面测了一发。嗯，$450$ 分，感觉很稳。一边感觉自己省队不出意外肯定稳了，一边盘算这几天要去哪里看看电影，放松一下什">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://anoxiacxy.github.io/images/background1.jpg">
+<meta property="og:updated_time" content="2018-04-12T03:21:09.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「HBOI2018」游记">
+<meta name="twitter:description" content="HBOI2018[九省联考]——零AC线外选手进队记$0+80+20=100$, 这便是蒟蒻选手 $Day1$ 的 $NOIP~2017$ 分数。$van$ 了，全 $van$ 了，这边是我当时的想法。在前一天，我拿到了自己 $NOIP$ 考试时的源代码，交到了 $luogu$ 上面测了一发。嗯，$450$ 分，感觉很稳。一边感觉自己省队不出意外肯定稳了，一边盘算这几天要去哪里看看电影，放松一下什">
+<meta name="twitter:image" content="https://anoxiacxy.github.io/images/background1.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://anoxiacxy.github.io/2018/04/11/HBOI2018游记/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>「HBOI2018」游记 | Anoxiacxy</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c77ff13e58ea93ceab2fb172561f87ab";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Anoxiacxy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://anoxiacxy.github.io/2018/04/11/HBOI2018游记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Anoxiacxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Anoxiacxy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「HBOI2018」游记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-04-11 20:33:00" itemprop="dateCreated datePublished" datetime="2018-04-11T20:33:00+08:00">2018-04-11</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/游记/" itemprop="url" rel="index"><span itemprop="name">游记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/11/HBOI2018游记/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/04/11/HBOI2018游记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/11/HBOI2018游记/" class="leancloud_visitors" data-flag-title="「HBOI2018」游记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HBOI2018-九省联考-——零AC线外选手进队记"><a href="#HBOI2018-九省联考-——零AC线外选手进队记" class="headerlink" title="HBOI2018[九省联考]——零AC线外选手进队记"></a>HBOI2018[九省联考]——零AC线外选手进队记</h1><p>$0+80+20=100$, 这便是蒟蒻选手 $Day1$ 的 $NOIP~2017$ 分数。<br>$van$ 了，全 $van$ 了，这边是我当时的想法。<br>在前一天，我拿到了自己 $NOIP$ 考试时的源代码，交到了 $luogu$ 上面测了一发。<br>嗯，$450$ 分，感觉很稳。<br>一边感觉自己省队不出意外肯定稳了，一边盘算这几天要去哪里看看电影，放松一下什么的。<br>没过多久便传来噩耗，在学军的数据之下，我的 $450$ 分挂成了 $270$ 分，其中第一题还因为头文件的问题 $CE(Compile~Error)$ 了，编译错误，$OI$ 选手的大忌，这不可能啊！<br>我明明都编译通过了。。。<br><img src="https://anoxiacxy.github.io/images/background1.jpg" alt=""></p>
+<a id="more"></a>
+<p>虽然考场上是出了点意外，我的 $Devc++$ 不能编译我的代码，似乎是什么 <code>&lt;cstdio&gt;</code> 缺失什么的。<br>然后我就没用这玩意，用了 <code>&lt;iostream&gt;</code> 似乎就对了，然后直接 $cin， cout$ 嘛。<br>自以为很机智，然后有一个无法避免的函数必须使用 <code>&lt;cstdio&gt;</code>，那就是 $freopen$。<br>$freopen$ 是个很神奇的东西，我往往最后加，但锅就出在这里了。<br>添加 $freopen$ 函数之后。。。我没有将这一份代码重新编译一遍：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目大意:</span></span><br><span class="line"><span class="comment">给定互素的两个正整数数a，b，</span></span><br><span class="line"><span class="comment">求一个最小的正整数c，使得所有大于c的数d，</span></span><br><span class="line"><span class="comment">都存在一组非负整数解（x，y）</span></span><br><span class="line"><span class="comment">有ax+by=d</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    freopen(<span class="string">"math.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"math.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> a, b; <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (a - <span class="number">1</span>) * (b - <span class="number">1</span>) - <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后 $100$ 分就这样没有啦，人生中最容易 $AC(Accept)$ 的考试题就这样放过去了，好气啊，感觉全世界都 $AC$ 了。<br>下面放一个正确的代码，大家自行找不同，注释部分可以忽略。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    freopen(<span class="string">"math.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"math.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> a, b; <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (a - <span class="number">1</span>) * (b - <span class="number">1</span>) - <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以及题目的提交地址：<a href="https://www.luogu.org/problemnew/show/P3951" target="_blank" rel="noopener">小凯的疑惑</a>，不清楚的可以自己思考一下。。。<br>这道题也就告一段落吧，凉啦凉啦，好在 $CCF$ 良心数据，我最终苟住了我的 $325$ 分。<br>可能可以不用退役吧。。。<br>$NOIP$ 只是开始啊。。。<br>退役了这一届信息组就崩了啊。。。<br>所以不能退役啊。。。<br>还没带过学弟呢。。。<br>蔡爷爷去年 $332$ 也翻盘了啊。。。<br>听同省的王老师说，最牛逼的是 $ZJE$ 同学，$NOIP$ 炸成 $240$ 分然后逆天进队啊。。。<br>然而今年 $400$ 以上的太多了啊，更是有 $XCH~530$ 的传奇分数。。。<br>算啦算啦，慢慢搞吧，信自己一回。。。滚去上<strong>综合课</strong>了 $2333$</p>
+<p>这搞毛线啊，本来就菜，$NOIP$ 挂成这个鬼样子，还把学习重心转向综合课？作大死啊！<br>不过考的不好又能怎样呢。。。老师一句话担心你继续搞竞赛有风险，就能拒绝你的一切请求。<br>自己也没实力敢说不啊。。。</p>
+<p>但不能颓啊。。。<br>每天中午去机房，下午有空也去机房，然后周末？不存在的，全部待在机房吧。<br>就在这样的日子里度过的高二的上半学期。。。<br>每天没怎么写作业，成绩也不太理想，也感谢给位老师和课代表的体谅吧。。。好多次作业没交了233。</p>
+<p>然后就到了冬令营</p>
+<p>听说冬令营炒鸡难啊。。。<br>历届的题完全不会做啊。。。<br>打暴力吧。。。<br>混分呐。。。<br>看《骗分导论》啊。。。</p>
+<p>冬令营的环境看似不错。。。<br>但完全不能满足 $OI$ 选手的需求啊。。。<br>$TMD$ 快 $600$ 人的冬令营，寝室连放电脑的桌子都没有？坐下来敲代码的凳子都没有？<br>鼠标完全不能用，因为没有位置。。。<br>键盘？凑合吧，还好是块硬板子。。。<br>关键是。。。每个人都带来了电脑。。。你得有充电的位置啊！！！！！！<br>$WIFI$ 寝室也没有啊！！！！！！$NND~4G$ 信号咋也屏蔽了啊！！！！！！</p>
+<p><del>冬眠体验极差</del></p>
+<p>当然，我不是来冬眠的。<br>每天听听讲课的大佬们的一些新奇思路<br>跟着口胡一波超级数据结构：</p>
+<blockquote>
+<p>数据结构学的好，未来工作没烦恼。<br>edt 是一个喜欢乱搞数据结构的蒟蒻，有一天，他作死想去刁难一下dalao：<br>edt想求一种数据结构，使得可以实现区间加，求出某一区间大于k的元素的个数<br>dalao1：sb线段树<br>dalao2：sb分块<br>dalao3：sb平衡树<br>edt: 不行，那就加上取模，求区间取膜mod后大于MIN小于MAX的元素个数<br>dalao1：线段树&amp;……￥#&amp;……%……&amp;&amp;%￥<br>dalao2：sb分块 &amp;%￥……%#￥#&amp;……&amp;<br>dalao3：&amp;……%&amp;￥LCT维护SBT水题 &amp;……%&amp;……%<br>edt：那不仅取模，每个数乘上数组下标再取模<br>dalao：￥%￥￥&amp;（#￥% 叽里呱啦叽里呱啦<br>edt：不行，在把取模的值丢到一棵树上，维护一棵仙人掌乘积方差的最小极差<br>dalao：替罪羊树上用sb块状链表维护Toptree上的最小费用最大流和可持久化仙人掌，算出来在基尔霍夫矩阵中反演后跑一遍fft维护的插头DP就好了，给我三分钟轻松水过。。<br>edt：mmp</p>
+</blockquote>
+<p>以上来自同校高一 $@Edgration$</p>
+<p>然后吃饭，睡觉。。。不说了。。。<br>真的不说了。。。手机摔了。。。$QAQ$<br>$($ 如果没有牌子的话 $)$ 亏大了啊。。。<br><del>于怒水？</del><br>拿牌子了啊，金牌啊！！！<br>咳咳。。。虽然。。。毛线用都没有。。。没约。。。</p>
+<p>不过得了个奖，想要停课搞竞赛也就有了理由嘛<br>然后郑重地写下生死状(停课申请)之后。。。我开始了我最近两个月的学习。。。</p>
+<p>和学长一样，估计了一下自己的分数，以及自己翻盘，得多拿多少分，最近应该去学什么东西，然后列出了一份清单。。。</p>
+<p><del>虽然直到现在这一份清单也没有全部完成</del></p>
+<p>因为 $Windows$ 系统出锅的我决定在此时使用 $Linux$\<br>然后发现，都是些什么玩意啊。。。不能单步调试，编译都要自己写脚本，搞毛线。。。。<br>感觉就像回到了石器时代。。。<br>坑爹。。。</p>
+<p>之后的时间，我一边强行熟悉 $Linux$，一边学习了一波各种神奇的反演知识，做了做网络流，和在冬令营上结识的 $panda$ 讨论一些学术问题。。。<br>无意中发现了 $KSkun$ 大佬的博客，也学习了不少新的知识，但依旧跟不上他的做题速度。。。（我太弱了$QAQ$）</p>
+<p>然后便到了模拟考试的日子了，刚开始还是每 $3$ 天考一次，我可以不至于天天被吊打。。。<br>甚至。。。偶尔还能虐个场，当场$AC$ 两道题的情况也有过，但挂的时候依旧很惨啊。。。</p>
+<p>心虚。。。</p>
+<p>虚着虚着就要省选了。。。<br>当时还有计划要口胡 $AK$ 所有的历年（简单）省选题的伟大理想。。。现在怕还没能实现啊。。。</p>
+<blockquote>
+<p>最后一次模拟赛了。。。<br>和高一的一起考。。。<br>考挂了就丑了啊。。。<br>还怎么做榜样。。。<br>在打开最后一次模拟赛的题目之前，都很心虚。。。</p>
+<p>但是之后。。。？</p>
+<p>第一题。。。sb倍增 + 树状数组 $O(nlog^2n)$<br>第二题。。。我做过啊，离线 + 二分 + 线段树 $O(nlog^2n)$， 听说有 $O(nlogn)$ 的在线做法？先不管了，$A$ 了再说<br>第三题。。。sb动态规划 + 树套树 $O(nlog^2n)$</p>
+<p>稳了啊，我能 $AK$ !</p>
+<p>$1.5H$ 不到，$3$ 题的正解已经打完，剩下只剩对怕了啊<br>$1.8H$，三题暴力程序准备完毕<br>$2.0H$，三道对怕拍上，简单修改一下。。。<br>估计 $AK$ 了，睡一下。。。</p>
+</blockquote>
+<p>这次最后的比赛最终以我 $300$ 分的好成绩告终。</p>
+<p>省选</p>
+<p>得知了自己的考号是 $11$（排名$11$，估计有两位大佬退役了） 之后，我觉得自己还是能抢救一下的，两天都不打挂。。。总能进 $4~5$ 名吧。。。那就进队了啊。</p>
+<p>$Day~1$</p>
+<p>$T~1$，博弈论？搜索？还好最近跟着 $panda$ 做了一下对抗搜索 $\alpha-\beta$ 剪枝等玩意，$50$ 分有吧。。。敲了。。。<br>$T~2$，$woc!$，我看不懂题意。。。全完了。。。看下 $T~3$ 吧。。。<br>$T~3$，$woc!$，不会做。。。打暴力吧。。。$15$ 分到手。。。</p>
+<p>回头干 $T~2$，咦，我看懂题意了，好高兴。。。$30$ 分暴力到手<br>继续 $T~3$，算了算了。。。想不出来。。。把链的暴力也打了吧。。。$25$ 分到手。。。<br>再次回头干 $T~2$，咦，我想到了一个贪心，，手玩几组数据之后。。。似乎是对的？好高兴。。。怕不是要 $AC$ ? 我这种傻逼选手终于也要 $A$ 题辣</p>
+<p>拍了十几组数据发现没毛病之后。。。就考完了。。。</p>
+<p>一出考场。。。$panda$ 告诉我第一题题意出锅了。。。慌得不行，以为爆零。。。不过也觉得稳啊，毕竟我应该是 $AC$ 了第二题了。。。最后确认第一题是他看错了。。。才放心。。。</p>
+<p>最后成绩下来了。。。$60 + 55 + 25 = 140$ 虽然是第一天 $Rank2$，但同样觉得自己 $T~2$ 挂的很奇怪。。。不过管他的呢。。。反正和 $NOIP$ 加权的分数一看我已经第 $5$ 名了，$NOIP$ 的失利终于被拉回来了!</p>
+<p>今天 $ysw$ 也有 $100$ 分，目前排名 $15$，明天不挂估计也省队了吧；$xyx$ 稳啊，$105$ 吊打所有女生，估计随便考都进队，然后还是 $A$ 队，强啊；$xlj$ 有点惨，只有 $45$，估计明天不好翻盘了。。。怕是得明年再省选了。同省的 $xch$ 似乎中场 $AK$ 然后溜辣，虽然挂了一题，但依旧 $180$ 分 $Rank~1$，省队队长稳啊；$panda$ 考试最后慌了。。。看错题目，不过好在最后改回来了，这也是心理素质极好的啊， $115$ 加上 $NOIP$ 分数不低，也很稳。</p>
+<p>$Day~2$</p>
+<p>$T~1$，网络流?感觉可做题啊，先放一下，有时间一定要 $A$<br>$T~2$，树上的神仙题，感觉会 $N^2$ 的动态规划，然后复杂度炸了。。。出题人没给这个部分分233，溜了。<br>$T~3$，字符串题？似乎莫对套后缀数组离线可以搞一搞，不过打起来很麻烦。。。</p>
+<p>先干 $T~1$，第一问裸的网络流，第二问求最大的最小？二分啊。。。等等。。。这个复杂度不对啊。。。$O(n^4logn)$? 不行不行。。。天呐。。。可持久化网络流？分段记忆化？什么神仙玩意？算了。。。我暴力每次存一波图吧。。。复杂度 $O(n^3logn)$ 似乎是对了？可以 $AC$ ？然后就感觉有个监考老师在背后偷偷瞄我的代码。。。感觉好虚。。。一定要打对啊。。。不然全 $van$ 了</p>
+<p>$T~2$ 我感觉最多 $10$ 分啊。。。性价比不高。。。干 $T~3$，似乎后缀数组超级麻烦啊。。。（完全没想怎么$HASH$），不妨先打 $25$ 分暴力吧。。。一遍过了编译和样例。。。已经心力憔悴。。。不像打对拍了。。。就仍那里了。。。</p>
+<p>打完 $T~2$ 的最后 $10$ 分，离考试结束也没 $1$ 小时了。。。检查。。。$T~1$ 是我最后一次 $AC$ 的机会了啊。。。可不能出锅啊。。。</p>
+<p>然后在考试结束前 $5$ 分钟发现自己 $T~1$ $MLE$ 了数组开小了边数又炸了。。。不知道怎么搞，只好调小数组以免 $MLE$，怕是不能 $AC$ 了。。。</p>
+<p>一出考场。。。发现自己 $T~1$ 忘了删反向边。。。怕是全完了啊。。。这是要爆零的节奏啊。。。听说他们都打的 $70$ 分暴力。。。我感觉这个假的正解怕是要完。。。暴力分都拿不到了。。。</p>
+<p>最后出成绩时还真是吓坏了我，我问讲师今天也没有人 $AC$ 了第一题啊，他立马就回过神来。。。问我是不是 $0011$ 号选手。。。$QAQ$，心里一惊。。。感觉要么自己凉了，要么发达了。。。“你打的 $O(n^3logn)$ 的算法吧？这个带 $logn$ 的算法就看你敢不敢打了。。。我今天看到你当时打网络流，以为今天有人要过题了。。。”。。。当时听这语气就感觉药丸。。。</p>
+<p>算了，依旧感谢 $CCF$ 的不杀之恩。。。我这一题光荣地得到了 $80$ 分的好成绩。。。比暴力分高 $10$ 分，算法是正解算法之一。。。然后被卡常数了 $2333$</p>
+<p>然后今天分数就比较惨淡了。。。我总分就 $80$, 后两题的暴力估计挂了。。。<br>$ysw$ 有点惨。。。他今天拿到我的分数就进队了。。。预估第一题的 $60$ 分挂成了 $10$ 分。。。无缘 $NOI2018$，感觉很可惜。。。<br>$xch$ 依旧 $95$ 分虐场，不过 $Rank~1$ 被 $wqs$ 抢过去了，感觉贼气\<br>$xyx$ 稳稳地干掉了所有女生，拿下省队 $A$ 队的位置。。。</p>
+<p>总结一下，今年湖北省选最终名单便是 $xch, wqs, cxy, wyx, ljy, wxz, yxr, lyc, xyx$，庆幸我们能在这场考试中存活，也对 $ysw, wyl, xlj, ztc$ 的离去表示遗憾，希望能尽快补回落下的综合知识。</p>
+<p>然后就是高一的今年 $NOIP$ 一定要考好啊。。。不然就像我一样从 $NOIP$ 一直虚到省选了，虽然只占 $30\%$ 但是省选里面很难能比别人多拿什么分，别看着什么 $5$ 分，$10$ 分少就不敲了。。。有时候就差那一点点啊。。。最重要的是。。。想要 $AC$ 一整道题目的同学，一定要想清楚有没有空间限制，时间限制，<del>代码长度限制</del><br>我感觉开场暴力打满，留下 $2 - 3$ 个小时干一道题正解是不错的做法，这样的话一般暴力挂了。。。你可能还有正解分，不会低，正解挂了暴力分还在。。。全都打对了估计就 $Rank~1$ 了，至于全都打错了。。。你凉了。。。</p>
+<p>然后最后。。。这个标题是唬人的啊。。。不想 $A$ 题的 $OIer$ 不是一个足够优秀的 $OIer$，虽然功利来看，暴力打满不出错真的是可以进省队。。。<br>这场省选，其实两次考试结束之后，我都以为自己能够 $AC$ 一道题目的<br>第一次挂了是因为一个错误的贪心。。。在某个条件下是正确的，一般情况却很可能发生错误，似乎还得改改思路才能完全过掉？然后 $A$ 题失败。。。<br>第二次挂了。。。是因为我的常数太大被关了起来，同省的 $panda$ 也和我打的一样的做法。。。然后更可惜。。。被卡成了暴力分。。。有点惨。。。</p>
+<p>这就造成了整个湖北省省队只有队长 $A$ 过题的惨烈局面。。。</p>
+<p>就这样吧。。。度过了这最难的一关，就有机会面对外省的大佬们了。。。<br><del>再列一张无法完成的计划表</del></p>
+<p>下个星期和队爷们一起去湖南省选溜达一圈，然后就 $APIO, CTSC$ 了，之后的 $PKUSC, NOI$也是十分重要的，最后高三慢慢搞文化课吧233，感觉好多坑。。。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/游记/" rel="tag"># 游记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/07/「字符串系列」/" rel="next" title="「字符串系列」">
+                <i class="fa fa-chevron-left"></i> 「字符串系列」
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/12/NOI2017题目整理/" rel="prev" title="「NOI2017」题目整理">
+                「NOI2017」题目整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar1.jpg"
+                alt="Anoxiacxy" />
+            
+              <p class="site-author-name" itemprop="name">Anoxiacxy</p>
+              <p class="site-description motion-element" itemprop="description">Just a place for OI ?</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/anoxiacxy" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1171049519@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.edgration.com" title="Edgration" target="_blank">Edgration</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://panda2134.tk" title="Panda2134" target="_blank">Panda2134</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HBOI2018-九省联考-——零AC线外选手进队记"><span class="nav-number">1.</span> <span class="nav-text">HBOI2018[九省联考]——零AC线外选手进队记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anoxiacxy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共165.5k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'h00rVboeWzWVxyEiyOANIMQq-gzGzoHsz',
+        appKey: 'iXoTTN9t2BfDImzc8kxgjpDN',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("h00rVboeWzWVxyEiyOANIMQq-gzGzoHsz", "iXoTTN9t2BfDImzc8kxgjpDN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>
